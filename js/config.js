@@ -1,23 +1,23 @@
 window.config={
     "brandTitle": "Ryan Wang",
     "brandSubtitle": "Editor / Colorist",
-    "brandHref": "Ryan_Wang/index.html",
+    "brandHref": "index.html",
     "menu": [
         {
             "name": "Film",
-            "href": "/index.html"
+            "href": "index.html"
         },
         {
             "name": "Commercial",
-            "href": "Ryan_Wang/index2.html"
+            "href": "index2.html"
         },
         {
             "name": "Color",
-            "href": "/index3.html"
+            "href": "index3.html"
         },
         {
             "name": "About",
-            "href": "/index4.html"
+            "href": "index4.html"
         }
     ],
     "leftFooterTitle": "Contact",
