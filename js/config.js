@@ -1,23 +1,23 @@
 window.config={
     "brandTitle": "Ryan Wang",
     "brandSubtitle": "Editor / Colorist",
-    "brandHref": "index.html",
+    "brandHref": "https://cyberspar.github.io/Ryan_Wang/index.html",
     "menu": [
         {
             "name": "Film",
-            "href": "index.html"
+            "href": "https://cyberspar.github.io/Ryan_Wang/index.html"
         },
         {
             "name": "Commercial",
-            "href": "index2.html"
+            "href": "https://cyberspar.github.io/Ryan_Wang/index2.html"
         },
         {
             "name": "Color",
-            "href": "index3.html"
+            "href": "https://cyberspar.github.io/Ryan_Wang/index3.html"
         },
         {
             "name": "About",
-            "href": "index4.html"
+            "href": "https://cyberspar.github.io/Ryan_Wang/index4.html"
         }
     ],
     "leftFooterTitle": "Contact",
