@@ -1,23 +1,23 @@
 window.config={
     "brandTitle": "Ryan Wang",
     "brandSubtitle": "Editor / Colorist",
-    "brandHref": "/qietu/qietu/index.html",
+    "brandHref": "/index.html",
     "menu": [
         {
             "name": "Film",
-            "href": "/qietu/qietu/index.html"
+            "href": "/index.html"
         },
         {
             "name": "Commercial",
-            "href": "/qietu/qietu/index2.html"
+            "href": "/index2.html"
         },
         {
             "name": "Color",
-            "href": "/qietu/qietu/index3.html"
+            "href": "/index3.html"
         },
         {
             "name": "About",
-            "href": "/qietu/qietu/index4.html"
+            "href": "/index4.html"
         }
     ],
     "leftFooterTitle": "Contact",
