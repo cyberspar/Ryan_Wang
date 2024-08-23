@@ -4,11 +4,11 @@ window.config={
     "brandHref": "https://cyberspar.github.io/Ryan_Wang/index.html",
     "menu": [
         {
-            "name": "Film",
+            "name": "Editing-Film",
             "href": "https://cyberspar.github.io/Ryan_Wang/index.html"
         },
         {
-            "name": "Commercial",
+            "name": "Editing-Commercial",
             "href": "https://cyberspar.github.io/Ryan_Wang/index2.html"
         },
         {
