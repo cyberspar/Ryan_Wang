@@ -1,0 +1,202 @@
+/* --- 全局样式和变量 --- */
+:root {
+    --bg-color: #ffffff;          /* 背景色 - 白色 */
+    --sidebar-bg-color: #f7f7f7;  /* 侧边栏背景 - 浅灰 */
+    --text-color: #666666;        /* 主要文字 - 中度灰 */
+    --title-color: #000000;       /* 标题 - 纯黑 */
+    --border-color: #e5e5e5;      /* 边框颜色 */
+    --accent-color: #007BFF;      /* 链接高亮色 */
+}
+
+body {
+    /* 使用 Poppins 字体，模仿 Fabrik 的几何无衬线风格 */
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 15px; 
+}
+
+/* --- 基础布局：Flexbox 实现两栏结构 --- */
+.portfolio-wrapper {
+    display: flex;
+}
+
+/* --- 左侧固定导航栏 --- */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar-bg-color);
+    border-right: 1px solid var(--border-color);
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-title {
+    font-size: 1.2rem; 
+    font-weight: 600; 
+    color: var(--title-color);
+    text-decoration: none;
+    margin-bottom: 40px;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-nav li a {
+    display: block;
+    padding: 8px 0; 
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.main-nav li a:hover,
+.main-nav li a.active {
+    color: var(--title-color); 
+    font-weight: 600;
+}
+
+.sidebar-footer {
+    margin-top: auto; 
+    font-size: 0.8rem; 
+    line-height: 1.4;
+}
+
+/* --- 右侧内容区域 --- */
+.main-content {
+    margin-left: 260px; 
+    padding: 40px;
+    width: calc(100% - 260px); 
+    box-sizing: border-box;
+    max-width: 1400px; 
+}
+
+/* --- 主页作品网格：实现一行四个小图 --- */
+.project-grid {
+    display: grid;
+    /* 关键：四列布局，最小宽度 250px */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px;
+}
+
+.project-item a {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-item a:hover img {
+    transform: scale(1.03); 
+}
+
+.project-item .title-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px; 
+    color: white;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); 
+    font-weight: 600;
+    box-sizing: border-box;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.project-item a:hover .title-overlay {
+    opacity: 1; 
+}
+
+
+/* --- 项目详情页 --- */
+.project-detail h1 {
+    font-size: 2rem; 
+    font-weight: 600;
+    color: var(--title-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.project-detail h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-top: 30px;
+}
+
+.project-detail p {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 800px;
+}
+
+.project-info-box strong {
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+/* 视频容器，确保 16:9 比例 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+    margin-top: 40px; 
+    max-width: 1000px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* --- 手机端响应式 (在小屏幕上，导航栏会堆叠到顶部) --- */
+@media (max-width: 768px) {
+    .portfolio-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: static; 
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px; 
+    }
+    
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .project-grid {
+        /* 手机上只显示一列 */
+        grid-template-columns: 1fr; 
+    }
+}
