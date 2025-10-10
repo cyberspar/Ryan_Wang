@@ -1,24 +1,28 @@
-/* --- 全局样式和变量 --- */
+/* --- 全局样式和变量 (精修版 V2) --- */
 :root {
-    --bg-color: #ffffff;          /* 背景色 - 白色 */
-    --sidebar-bg-color: #f7f7f7;  /* 侧边栏背景 - 浅灰 */
-    --text-color: #666666;        /* 主要文字 - 中度灰 */
-    --title-color: #000000;       /* 标题 - 纯黑 */
-    --border-color: #e5e5e5;      /* 边框颜色 */
-    --accent-color: #007BFF;      /* 链接高亮色 */
+    --bg-color: #ffffff;
+    --sidebar-bg-color: #f7f7f7;
+    --text-color: #333333;        /* 优化: 使用更柔和的深灰色 */
+    --title-color: #000000;
+    --border-color: #e5e5e5;
+    --accent-color: #007BFF;
 }
 
 body {
-    /* 使用 Poppins 字体，模仿 Fabrik 的几何无衬线风格 */
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    font-size: 15px; 
+    font-size: 16px;              /* 优化: 将基础字号调整为更易读的 16px */
+    font-weight: 400;             /* 优化: 设定标准的正文字重 */
+
+    /* 优化: 增加字体平滑渲染，让文字更清晰 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- 基础布局：Flexbox 实现两栏结构 --- */
+/* --- 基础布局 --- */
 .portfolio-wrapper {
     display: flex;
 }
@@ -44,6 +48,7 @@ body {
     color: var(--title-color);
     text-decoration: none;
     margin-bottom: 40px;
+    letter-spacing: 0.5px; /* 优化: 增加微小的字间距 */
 }
 
 .main-nav ul {
@@ -59,7 +64,7 @@ body {
     color: var(--text-color);
     font-size: 1rem;
     font-weight: 400;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
 .main-nav li a:hover,
@@ -72,23 +77,23 @@ body {
     margin-top: auto; 
     font-size: 0.8rem; 
     line-height: 1.4;
+    color: #999; /* 优化: 使用更浅的灰色 */
 }
 
 /* --- 右侧内容区域 --- */
 .main-content {
     margin-left: 260px; 
-    padding: 40px;
+    padding: 50px; /* 优化: 增加内边距 */
     width: calc(100% - 260px); 
     box-sizing: border-box;
     max-width: 1400px; 
 }
 
-/* --- 主页作品网格：实现一行四个小图 --- */
+/* --- 主页作品网格 --- */
 .project-grid {
     display: grid;
-    /* 关键：四列布局，最小宽度 250px */
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 20px;
+    gap: 30px; /* 优化: 增加网格间距 */
 }
 
 .project-item a {
@@ -96,17 +101,18 @@ body {
     text-decoration: none;
     position: relative;
     overflow: hidden;
+    border-radius: 4px; /* 优化: 增加轻微圆角 */
 }
 
 .project-item img {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 优化: 调整动画曲线 */
 }
 
 .project-item a:hover img {
-    transform: scale(1.03); 
+    transform: scale(1.05); 
 }
 
 .project-item .title-overlay {
@@ -114,13 +120,14 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 10px; 
+    padding: 15px; 
     color: white;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); 
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); 
     font-weight: 600;
     box-sizing: border-box;
     opacity: 0; 
     transition: opacity 0.3s ease;
+    font-size: 1.1rem; /* 优化: 调整覆盖标题字号 */
 }
 
 .project-item a:hover .title-overlay {
@@ -130,18 +137,19 @@ body {
 
 /* --- 项目详情页 --- */
 .project-detail h1 {
-    font-size: 2rem; 
-    font-weight: 600;
+    font-size: 2.2rem; /* 优化: 调整标题字号 */
+    font-weight: 700;  /* 优化: 标题更粗 */
     color: var(--title-color);
     margin-top: 0;
     margin-bottom: 20px;
+    letter-spacing: -0.5px; /* 优化: 负间距让大标题更紧凑 */
 }
 
 .project-detail h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: var(--title-color);
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .project-detail p {
@@ -155,7 +163,6 @@ body {
     color: var(--title-color);
 }
 
-/* 视频容器，确保 16:9 比例 */
 .video-wrapper {
     position: relative;
     padding-bottom: 56.25%; 
@@ -163,6 +170,8 @@ body {
     overflow: hidden;
     margin-top: 40px; 
     max-width: 1000px;
+    border-radius: 8px; /* 优化: 为视频增加圆角 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 优化: 增加轻微阴影 */
 }
 
 .video-wrapper iframe {
@@ -174,7 +183,7 @@ body {
 }
 
 
-/* --- 手机端响应式 (在小屏幕上，导航栏会堆叠到顶部) --- */
+/* --- 手机端响应式 --- */
 @media (max-width: 768px) {
     .portfolio-wrapper {
         flex-direction: column;
@@ -192,11 +201,14 @@ body {
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 20px;
+        padding: 30px 20px; /* 优化: 调整手机内边距 */
     }
 
     .project-grid {
-        /* 手机上只显示一列 */
         grid-template-columns: 1fr; 
+    }
+
+    .project-detail h1 {
+        font-size: 1.8rem;
     }
 }
