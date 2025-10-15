@@ -15,56 +15,60 @@ document.addEventListener("DOMContentLoaded", () => {
             portfolioGridView.style.display = 'block';
         }
 
-        // 2. 激活正确的链接
+        // 2. 运行筛选
+        if (gridContainer) {
+            generateProjectGrid(gridContainer, roleFilter, typeFilter);
+        }
+        
+        // 3. 激活正确的链接
         navLinks.forEach(nav => nav.classList.remove('active'));
         if (activeLink) {
             activeLink.classList.add('active');
         }
-
-        // 3. 运行筛选
-        if (gridContainer) {
-            generateProjectGrid(gridContainer, roleFilter, typeFilter);
-        }
     };
 
-    // ⬇️ 核心功能：折叠菜单逻辑 (修复点击无反应的问题) ⬇️
-    toggleHeaders.forEach(header => {
-        header.addEventListener('click', () => {
-            const category = header.getAttribute('data-category');
-            const submenu = document.querySelector(`.submenu[data-category="${category}"]`);
-            
-            if (submenu) {
-                // 检查是否已展开
-                if (submenu.style.height === '0px' || submenu.style.height === '') {
-                    // 展开菜单
-                    submenu.style.height = submenu.scrollHeight + 'px';
-                } else {
-                    // 折叠菜单
-                    submenu.style.height = '0px';
+    // ⬇️ 核心功能：折叠菜单逻辑 (修复点击无反应的 Bug) ⬇️
+    if (toggleHeaders.length > 0) { // 确保元素存在，避免 JS 报错
+        toggleHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const category = header.getAttribute('data-category');
+                const submenu = document.querySelector(`.submenu[data-category="${category}"]`);
+                
+                if (submenu) {
+                    // 检查是否已展开
+                    if (submenu.style.height === '0px' || submenu.style.height === '') {
+                        // 展开菜单
+                        submenu.style.height = submenu.scrollHeight + 'px';
+                    } else {
+                        // 折叠菜单
+                        submenu.style.height = '0px';
+                    }
                 }
-            }
+            });
         });
-    });
+    }
 
     // ⬇️ 核心功能：筛选逻辑 - 点击子菜单链接时，切换到网格视图 ⬇️
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
+    if (navLinks.length > 0) { // 确保链接存在
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
 
-            const singleFilter = e.target.getAttribute('data-filter');
-            const roleFilter = e.target.getAttribute('data-role');
-            const typeFilter = e.target.getAttribute('data-type');
+                const singleFilter = e.target.getAttribute('data-filter');
+                const roleFilter = e.target.getAttribute('data-role');
+                const typeFilter = e.target.getAttribute('data-type');
 
-            // 逻辑分支
-            if (singleFilter) {
-                // 'Showcase' / 'Branded'
-                switchView(singleFilter, 'all', e.target); 
-            } else if (roleFilter && typeFilter) {
-                // 二级菜单筛选 (Role AND Type)
-                switchView(roleFilter, typeFilter, e.target);
-            }
+                // 逻辑分支
+                if (singleFilter) {
+                    // 辅助筛选 (Showcase / Branded)
+                    switchView(singleFilter, 'all', e.target); 
+                } else if (roleFilter && typeFilter) {
+                    // 二级菜单筛选 (Role AND Type)
+                    switchView(roleFilter, typeFilter, e.target);
+                }
+            });
         });
-    });
+    }
 
     // ⬇️ 修正 3: 点击左上角标题，回到图片主页 ⬇️
     siteTitle.addEventListener('click', (e) => {
@@ -92,12 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const detailContainer = document.getElementById('project-detail-container');
     if (detailContainer) {
         generateProjectDetail(detailContainer);
-        // 如果是详情页，不应该显示 Landing View
         landingView.style.display = 'none';
         portfolioGridView.style.display = 'block';
     }
 });
-
 // **********************************************
 // * 核心筛选函数 (请确保 app.js 中包含此部分代码) *
 // **********************************************
@@ -107,7 +109,7 @@ function generateProjectGrid(container, roleFilter, typeFilter) {
 
     const filteredProjects = projectsData.filter(project => {
         // 1. 单标签筛选 ('showcase', 'branded')
-        if (typeFilter === 'all' || typeFilter === undefined) { // 如果 typeFilter 是 'all' 或未定义 (即点击 Showcase/Branded)
+        if (typeFilter === 'all' || typeFilter === undefined) { 
             return roleFilter === 'all' || project.roles.includes(roleFilter);
         }
         
