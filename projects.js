@@ -1,5 +1,5 @@
 // ======================================================================
-// 你的项目数据库 (最终版本 - 统一使用小写标签)
+// 你的项目数据库 (最终版本 - 语法校验通过)
 // ======================================================================
 
 const projectsData = [
@@ -86,6 +86,15 @@ const projectsData = [
         roles: ["color", "narrative"],
         description: `<p>Logline: A father and son engage in a heartfelt conversation about the meaning of life following the passing of the grandfather.</p><p>Director: Joel Bonilla<br>Writer: Connor McCahan<br>Producer: Patrick Shannon<br>DOP: Jason Miao<br>Editor: Zhaoxinyue Li<br><strong>Colorist: Ryan Wang</strong></p>`
     },
+    {
+        id: "stranger", 
+        title: "Stranger",
+        coverImage: "image/Stranger/1.jpg",
+        youtubeId: "[待提供视频ID，原文件为图集]",
+        roles: ["editing", "narrative"],
+        description: `<p>Director: Qingyi “Evey” Yu<br>Writer: Eva McConnell<br>Producer: Huiqi Kuang<br>DOP: Modak Karani Devi Sathyanarayanan<br><strong>Editor: Ryan Wang</strong><br>Production Designer: Claire Choi<br>Sound Designer: Jialiang Sun</p>`
+    },
+    
     // ------------------- [ 商业广告 (Commercial) - 默认同时负责 ] -------------------------
     {
         id: "estee-revitalizing-c", 
@@ -145,4 +154,36 @@ const projectsData = [
     },
     {
         id: "uniqlo-fall21-c", 
-        title: "Uniqlo 20
+        title: "Uniqlo 2021 Beijing fall version",
+        coverImage: "https://img.youtube.com/vi/oFINYU4OH1A/maxresdefault.jpg",
+        youtubeId: "oFINYU4OH1A",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>` 
+    },
+    {
+        id: "skap-2023-c", 
+        title: "SKAP 2023",
+        coverImage: "https://img.youtube.com/vi/T7th9-jyCIk/maxresdefault.jpg",
+        youtubeId: "T7th9-jyCIk",
+        roles: ["editing", "color", "commercial"],
+        description: `<p>1 min shoe-brand commercial. Edited and color graded by myself.</p>` 
+    },
+    {
+        id: "quark-x-xiaohui-c", 
+        title: "夸克x赵晓卉",
+        coverImage: "https://img.youtube.com/vi/D3K-oH05yck/maxresdefault.jpg",
+        youtubeId: "D3K-oH05yck",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>` 
+    },
+    {
+        id: "first-frame-c", 
+        title: "Behind the scenes: FIRST FRAME - NOWNESS",
+        coverImage: "https://img.youtube.com/vi/AFQcEFzcZXE/maxresdefault.jpg", 
+        youtubeId: "AFQcEFzcZXE",
+        roles: ["editing", "color", "commercial"], 
+        description: `<p>Edited and color-graded by me</p>`
+    }
+];
+
+window.projectsData = projectsData;
