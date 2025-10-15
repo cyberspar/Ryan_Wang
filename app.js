@@ -5,17 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll('.main-nav a');
     const gridContainer = document.getElementById('project-grid-container');
     const toggleHeaders = document.querySelectorAll('.nav-toggle'); 
-    const siteTitle = document.querySelector('.site-title'); // 获取左上角标题
+    const siteTitle = document.querySelector('.site-title'); 
 
-    // 视图切换函数 (切换到网格视图并筛选)
-    const switchToGrid = (roleFilter, typeFilter, activeLink) => {
+    // 视图切换函数
+    const switchView = (roleFilter = 'editing', typeFilter = 'narrative', activeLink = null) => {
         // 1. 切换视图：Landing View 消失，Grid View 出现
         if (landingView && portfolioGridView) {
             landingView.style.display = 'none';
             portfolioGridView.style.display = 'block';
         }
 
-        // 2. 移除所有 active 状态，并激活当前点击的链接
+        // 2. 激活正确的链接
         navLinks.forEach(nav => nav.classList.remove('active'));
         if (activeLink) {
             activeLink.classList.add('active');
@@ -26,27 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
             generateProjectGrid(gridContainer, roleFilter, typeFilter);
         }
     };
-    
-    // 视图切换函数 (切换回主页图片视图)
-    const switchToLanding = () => {
-        if (landingView && portfolioGridView) {
-            landingView.style.display = 'block';
-            portfolioGridView.style.display = 'none';
-        }
-        // 移除所有 active 状态
-        navLinks.forEach(nav => nav.classList.remove('active'));
-        // 确保所有子菜单处于折叠状态
-        document.querySelectorAll('.submenu').forEach(sub => sub.style.height = '0px');
-    };
 
-
-    // ⬇️ 修正 1: 点击左上角标题，回到图片主页 ⬇️
-    siteTitle.addEventListener('click', (e) => {
-        e.preventDefault(); 
-        switchToLanding();
-    });
-
-    // ⬇️ 核心功能：折叠菜单逻辑 ⬇️
+    // ⬇️ 核心功能：折叠菜单逻辑 (修复点击无反应的问题) ⬇️
     toggleHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const category = header.getAttribute('data-category');
@@ -70,18 +51,39 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
 
+            const singleFilter = e.target.getAttribute('data-filter');
             const roleFilter = e.target.getAttribute('data-role');
             const typeFilter = e.target.getAttribute('data-type');
 
-            if (roleFilter && typeFilter) {
+            // 逻辑分支
+            if (singleFilter) {
+                // 'Showcase' / 'Branded'
+                switchView(singleFilter, 'all', e.target); 
+            } else if (roleFilter && typeFilter) {
                 // 二级菜单筛选 (Role AND Type)
-                switchToGrid(roleFilter, typeFilter, e.target);
+                switchView(roleFilter, typeFilter, e.target);
             }
         });
     });
 
-    // ⬇️ 修正 2: 初始状态设置 ⬇️
-    // 网站加载完成后，确保显示的是 Landing View，并且所有子菜单是关闭的。
+    // ⬇️ 修正 3: 点击左上角标题，回到图片主页 ⬇️
+    siteTitle.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        switchToLanding();
+    });
+    
+    // 视图切换函数 (切换回主页图片视图)
+    const switchToLanding = () => {
+        if (landingView && portfolioGridView) {
+            landingView.style.display = 'block';
+            portfolioGridView.style.display = 'none';
+        }
+        // 移除所有 active 状态并确保子菜单折叠
+        navLinks.forEach(nav => nav.classList.remove('active'));
+        document.querySelectorAll('.submenu').forEach(sub => sub.style.height = '0px');
+    };
+
+    // ⬇️ 修正 4: 初始状态设置 ⬇️
     if (window.location.search === "") {
          switchToLanding();
     }
@@ -90,24 +92,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const detailContainer = document.getElementById('project-detail-container');
     if (detailContainer) {
         generateProjectDetail(detailContainer);
+        // 如果是详情页，不应该显示 Landing View
         landingView.style.display = 'none';
-        portfolioGridView.style.display = 'none';
+        portfolioGridView.style.display = 'block';
     }
 });
 
 // **********************************************
-// * 核心筛选函数 (保持不变) *
+// * 核心筛选函数 (请确保 app.js 中包含此部分代码) *
 // **********************************************
 
 function generateProjectGrid(container, roleFilter, typeFilter) {
     container.innerHTML = ''; 
 
     const filteredProjects = projectsData.filter(project => {
-        // 必须同时满足 角色 (role) 和 类型 (type) 两个条件
-        const roleMatch = project.roles.includes(roleFilter);
-        const typeMatch = project.roles.includes(typeFilter);
+        // 1. 单标签筛选 ('showcase', 'branded')
+        if (typeFilter === 'all' || typeFilter === undefined) { // 如果 typeFilter 是 'all' 或未定义 (即点击 Showcase/Branded)
+            return roleFilter === 'all' || project.roles.includes(roleFilter);
+        }
+        
+        // 2. 二级菜单 (Role AND Type) 筛选
+        if (roleFilter && typeFilter) {
+            const roleMatch = project.roles.includes(roleFilter);
+            const typeMatch = project.roles.includes(typeFilter);
+            return roleMatch && typeMatch;
+        }
 
-        return roleMatch && typeMatch;
+        return true; 
     });
 
     // 渲染筛选后的项目
