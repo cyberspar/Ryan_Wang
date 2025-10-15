@@ -8,13 +8,12 @@
 }
 
 body {
-    /* ⬇️ 基础排版：IBM Plex Mono，字号 13px ⬇️ */
     font-family: 'IBM Plex Mono', monospace;
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.4;
-    font-size: 13px; /* 基础字号 */
+    font-size: 13px;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -22,16 +21,15 @@ body {
 
 .portfolio-wrapper { display: flex; }
 
-/* --- 左侧固定导航栏 --- */
 .sidebar {
     width: 200px;
     height: 100vh;
     position: fixed; 
     top: 0;
     left: 0;
-    background-color: var(--bg-color);
+    background-color: var(--sidebar-bg-color);
     border-right: 1px solid var(--border-color);
-    padding: 30px; 
+    padding: 30px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -47,18 +45,18 @@ body {
     letter-spacing: 0.1em;
 }
 
-/* ⬇️ 导航链接和头部样式：极度紧凑 ⬇️ */
+/* 导航栏样式... */
 .nav-header {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem; /* 约 12px */
+    font-size: 0.75rem;
     font-weight: 700;
     color: #000;
     margin-top: 25px;
-    margin-bottom: 0px; /* 紧贴链接 */
+    margin-bottom: 0px;
     padding: 4px 0 3px 0;
     pointer-events: none;
     text-transform: uppercase;
-    letter-spacing: 0.8px; /* 增加一点字间距 */
+    letter-spacing: 0.8px;
 }
 
 .nav-divider {
@@ -72,99 +70,10 @@ body {
 
 .main-nav li a {
     display: block;
-    padding: 2px 0; /* ⬇️ 极小垂直间距 ⬇️ */
+    padding: 2px 0; 
     text-decoration: none;
     color: var(--text-color);
-    font-size: 0.85rem; /* 约 13.6px，小且清晰 */
+    font-size: 0.85rem;
     font-weight: 400;
-    line-height: 1.3; /* 紧凑行高 */
-    transition: color 0.2s ease, font-weight 0.2s ease;
-}
-
-.main-nav li a:hover, .main-nav li a.active {
-    color: var(--title-color); 
-    font-weight: 600;
-}
-
-/* 底部文字 (Footer/Copyright) */
-.sidebar-footer {
-    font-family: 'IBM Plex Mono', monospace;
-    margin-top: auto; 
-    font-size: 0.75rem; /* ⬇️ 最小字号，匹配Wyatt Maw的版权信息大小 ⬇️ */
-    line-height: 1.4;
-    color: #555;
-}
-
-/* --- Landing Page / Main Content --- */
-.main-content {
-    margin-left: 200px; 
-    padding: 0; 
-    width: calc(100% - 200px); 
-    height: 100vh; 
-    overflow-y: auto; 
-}
-
-#landing-view {
-    position: relative;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%; 
-    background-color: var(--bg-color);
-    padding: 0; margin: 0;
-}
-
-.landing-image-display {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    cursor: pointer;
-}
-
-/* --- 作品网格和详情页样式 --- */
-#portfolio-grid-view {
-    padding: 50px 5vw; 
-    min-height: 100vh;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 30px;
-}
-
-/* 详情页标题/正文样式 */
-.project-detail h1 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--title-color);
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
-    margin-top: 40px;
-}
-
-.project-detail p {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.95rem; /* 详情页正文采用较小字号 */
-    font-weight: 400;
-    line-height: 1.6;
-    max-width: 800px;
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; 
-    height: 0;
-    max-width: 1000px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
+    line-height: 1.3;
+    transition: color 0.2s ease
