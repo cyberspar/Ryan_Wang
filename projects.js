@@ -1,5 +1,5 @@
 // ======================================================================
-// 你的项目数据库 (最终版本 - 仅包含核心角色和类型标签)
+// 你的项目数据库 (最终版本 - 统一使用小写标签)
 // ======================================================================
 
 const projectsData = [
@@ -7,7 +7,7 @@ const projectsData = [
     {
         id: "temptation", 
         title: "Temptation",
-        coverImage: "https://img.youtube.com/vi/d_pRl5GpFSU/maxresdefault.jpg",
+        coverImage: "https://img.youtube.com/vi/d_pRl5GpFSU/maxresdefault.jpg", 
         youtubeId: "d_pRl5GpFSU",
         roles: ["editing", "color", "narrative"],
         description: `<p>A character through action assignment at Chapman University<br>Logline: A 3 mintues short film use no dialogue or music to tell how a young student can’t resist the temptation of game and skip his assignment.</p><p><strong>Directed & filmed & edited & color graded by me.</strong><br><br>Special thanks to Willem Wang</p>`
@@ -86,30 +86,6 @@ const projectsData = [
         roles: ["color", "narrative"],
         description: `<p>Logline: A father and son engage in a heartfelt conversation about the meaning of life following the passing of the grandfather.</p><p>Director: Joel Bonilla<br>Writer: Connor McCahan<br>Producer: Patrick Shannon<br>DOP: Jason Miao<br>Editor: Zhaoxinyue Li<br><strong>Colorist: Ryan Wang</strong></p>`
     },
-    {
-        id: "stranger", 
-        title: "Stranger",
-        coverImage: "image/Stranger/1.jpg",
-        youtubeId: "[待提供视频ID，原文件为图集]",
-        roles: ["editing", "narrative"],
-        description: `<p>Director: Qingyi “Evey” Yu<br>Writer: Eva McConnell<br>Producer: Huiqi Kuang<br>DOP: Modak Karani Devi Sathyanarayanan<br><strong>Editor: Ryan Wang</strong><br>Production Designer: Claire Choi<br>Sound Designer: Jialiang Sun</p>`
-    },
-    {
-        id: "killher", 
-        title: "Killher",
-        coverImage: "image/Killher/1.jpg",
-        youtubeId: "[待提供视频ID，原文件为图集]",
-        roles: ["color", "narrative"],
-        description: `<p>Logline: [原文件无 Logline]</p><p>Director:Roze JC Zepeda<br>Writer: Kiyanti Schlank<br>Producer: Margot Moore & Isabelle Rivera<br>DOP: Ziyue Hu<br>Editor: Aastha Kotak<br><strong>Colorist: Ryan Wang</strong></p>`
-    },
-    {
-        id: "lights-out", 
-        title: "Lights Out",
-        coverImage: "image/Lights out/1.jpg",
-        youtubeId: "[待提供视频ID，原文件为图集]",
-        roles: ["color", "narrative"],
-        description: `<p>Logline: A retired professional boxer infiltrates into his opponent's home to seek revenge, and they engage in a fight in the garage.</p><p>Director: Tims Tsaia<br>Writer: Erika Dunn<br>Producer: Tims Tsai<br>DOP: Jacob Chen<br>Editor: Willem Alec Wang<br><strong>Colorist: Ryan Wang</strong></p>`
-    },
     // ------------------- [ 商业广告 (Commercial) - 默认同时负责 ] -------------------------
     {
         id: "estee-revitalizing-c", 
@@ -169,36 +145,4 @@ const projectsData = [
     },
     {
         id: "uniqlo-fall21-c", 
-        title: "Uniqlo 2021 Beijing fall version",
-        coverImage: "https://img.youtube.com/vi/oFINYU4OH1A/maxresdefault.jpg",
-        youtubeId: "oFINYU4OH1A",
-        roles: ["editing", "color", "commercial"],
-        description: `<p></p>` 
-    },
-    {
-        id: "skap-2023-c", 
-        title: "SKAP 2023",
-        coverImage: "https://img.youtube.com/vi/T7th9-jyCIk/maxresdefault.jpg",
-        youtubeId: "T7th9-jyCIk",
-        roles: ["editing", "color", "commercial"],
-        description: `<p>1 min shoe-brand commercial. Edited and color graded by myself.</p>` 
-    },
-    {
-        id: "quark-x-xiaohui-c", 
-        title: "夸克x赵晓卉",
-        coverImage: "https://img.youtube.com/vi/D3K-oH05yck/maxresdefault.jpg",
-        youtubeId: "D3K-oH05yck",
-        roles: ["editing", "color", "commercial"],
-        description: `<p></p>` 
-    },
-    {
-        id: "first-frame-c", 
-        title: "Behind the scenes: FIRST FRAME - NOWNESS",
-        coverImage: "https://img.youtube.com/vi/AFQcEFzcZXE/maxresdefault.jpg", 
-        youtubeId: "AFQcEFzcZXE",
-        roles: ["editing", "color", "commercial"], // 视为商业项目的一种 showcase
-        description: `<p>Edited and color-graded by me</p>`
-    }
-];
-
-window.projectsData = projectsData;
+        title: "Uniqlo 20
