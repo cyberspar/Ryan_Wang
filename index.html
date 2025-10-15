@@ -7,15 +7,31 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="portfolio-wrapper">
         <nav class="sidebar">
             <a href="index.html" class="site-title">Ryan Wang</a>
+            
             <ul class="main-nav">
-                <li><a href="index.html" class="active">作品 (Projects)</a></li>
+                <li><a href="#" data-filter="all" class="active">全部作品 (All)</a></li>
+                
+                <hr class="nav-divider">
+                
+                <li class="nav-header">按角色筛选 (By Role)</li>
+                <li><a href="#" data-filter="color">调色 (Color Grading)</a></li>
+                <li><a href="#" data-filter="editing">剪辑 (Editing)</a></li>
+                
+                <hr class="nav-divider">
+
+                <li class="nav-header">按项目类型 (By Type)</li>
+                <li><a href="#" data-filter="narrative">叙事短片 (Narrative)</a></li>
+                <li><a href="#" data-filter="commercial">商业广告 (Commercial)</a></li>
+                <li><a href="#" data-filter="branded">品牌内容 (Branded Content)</a></li>
+                <li><a href="#" data-filter="showcase">精选集锦 (Showcase)</a></li>
             </ul>
+
             <div class="sidebar-footer">
                 <p>Contact:<br><a href="mailto:your.email@example.com">your.email@example.com</a></p>
             </div>
