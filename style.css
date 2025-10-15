@@ -57,6 +57,13 @@ body {
     letter-spacing: 0.8px;
 }
 
+.nav-divider {
+    margin: 25px 0; 
+    border: 0; 
+    border-top: 1px solid var(--border-color);
+    opacity: 0.6;
+}
+
 .main-nav ul { list-style: none; padding: 0; margin: 0; }
 .main-nav > li { list-style: none; }
 
@@ -74,21 +81,6 @@ body {
 .main-nav li a:hover, .main-nav li a.active {
     color: var(--title-color); 
     font-weight: 600;
-}
-
-.submenu {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0 10px;
-    height: 0;
-    overflow: hidden;
-    transition: height 0.3s ease-out;
-}
-
-.submenu li a {
-    font-size: 0.85rem;
-    padding: 3px 0;
-    font-weight: 300;
 }
 
 .sidebar-footer {
@@ -134,12 +126,12 @@ body {
     min-height: 100vh;
 }
 
-/* ⬇️ 核心修改：项目网格布局 ⬇️ */
+/* ⬇️ 核心修改：项目网格布局 - 一行三个 ⬇️ */
 .project-grid {
     display: grid;
-    /* 修正：将最小宽度调整为 220px，以容纳 4 列 */
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-    gap: 25px; 
+    /* 修正：最小宽度增加到 320px，确保只能容纳 3 列 */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 30px; 
 }
 
 .project-item a {
@@ -237,6 +229,7 @@ body {
         width: 100%;
         padding: 50px 20px;
     }
+    /* 手机上强制单列 */
     .project-grid { grid-template-columns: 1fr; }
     .project-detail h1 { font-size: 1.8rem; }
 }
