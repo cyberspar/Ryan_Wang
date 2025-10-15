@@ -1,56 +1,20 @@
-:root {
-    --bg-color: #ffffff;
-    --sidebar-bg-color: #ffffff;
-    --text-color: #000000;
-    --title-color: #000000;
-    --border-color: #e5e5e5;
-    --accent-color: #007BFF;
-}
-
-body {
-    font-family: 'IBM Plex Mono', monospace;
+/* 修复折叠效果的关键样式 */
+.submenu {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.4;
-    font-size: 13px;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    height: 0; /* 必须是 0，初始折叠状态 */
+    overflow: hidden; /* 必须隐藏溢出内容 */
+    /* ⬇️ 核心：这个属性让高度变化产生动画效果 ⬇️ */
+    transition: height 0.3s ease-out; 
 }
 
-.portfolio-wrapper { display: flex; }
-
-.sidebar {
-    width: 200px;
-    height: 100vh;
-    position: fixed; 
-    top: 0;
-    left: 0;
-    background-color: var(--sidebar-bg-color);
-    border-right: 1px solid var(--border-color);
-    padding: 30px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-.site-title {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1rem; 
-    font-weight: 600;
-    color: var(--title-color);
-    text-decoration: none;
-    margin-bottom: 50px;
-    letter-spacing: 0.1em;
-}
-
-/* ⬇️ 核心 CSS：折叠菜单样式 ⬇️ */
+/* 确保父级标题可以点击 */
 .nav-header.nav-toggle {
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--title-color); /* 可点击的父级标题使用纯黑色 */
+    color: var(--title-color); 
     margin-top: 15px;
     margin-bottom: 5px;
     padding: 4px 0 3px 0;
@@ -58,70 +22,9 @@ body {
     transition: color 0.2s;
 }
 
-.nav-header.nav-toggle:hover {
-    color: #555;
-}
-
-.submenu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 0; /* 默认隐藏 */
-    overflow: hidden;
-    transition: height 0.3s ease-out; /* 平滑展开/折叠动画 */
-}
-
+/* 确保子链接有正确缩进 */
 .submenu li a {
     font-size: 0.85rem;
     padding: 3px 0 3px 10px; /* 缩进 */
-    font-weight: 300; /* 子菜单字体更细 */
+    font-weight: 300; 
 }
-
-/* 导航栏其他样式... (保持不变) */
-.nav-header {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #000;
-    margin-top: 25px;
-    margin-bottom: 0px;
-    padding: 4px 0 3px 0;
-    pointer-events: none;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-.nav-divider {
-    margin: 15px 0; 
-    border: 0; 
-    border-top: 1px solid var(--border-color);
-    opacity: 0.6;
-}
-
-.main-nav ul { list-style: none; padding: 0; margin: 0; }
-
-.main-nav li a {
-    display: block;
-    padding: 2px 0; 
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 0.95rem;
-    font-weight: 400;
-    line-height: 1.3;
-    transition: color 0.2s ease, font-weight 0.2s ease;
-}
-
-.main-nav li a:hover, .main-nav li a.active {
-    color: var(--title-color); 
-    font-weight: 600;
-}
-
-.sidebar-footer {
-    font-family: 'IBM Plex Mono', monospace;
-    margin-top: auto; 
-    font-size: 0.75rem; 
-    line-height: 1.4;
-    color: #555;
-}
-
-/* ... (省略了其他样式，请与你原有的 style.css 合并) ... */
