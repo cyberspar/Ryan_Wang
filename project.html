@@ -3,27 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Detail - Ryan Wang</title>
+    <title>Ryan Wang - Editing & Colorist Portfolio</title>
     <link rel="stylesheet" href="style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="portfolio-wrapper">
         <nav class="sidebar">
             <a href="index.html" class="site-title">Ryan Wang</a>
+            
             <ul class="main-nav">
-                <li><a href="index.html" class="active">作品 (Projects)</a></li>
+                <li><a href="#" data-filter="all" id="show-grid-link" class="active">All Projects</a></li>
+                
+                <hr class="nav-divider">
+                
+                <li class="nav-header">FILTER BY ROLE</li>
+                <li><a href="#" data-filter="color">Color Grading</a></li>
+                <li><a href="#" data-filter="editing">Editing</a></li>
+                
+                <hr class="nav-divider">
+
+                <li class="nav-header">FILTER BY TYPE</li>
+                <li><a href="#" data-filter="narrative">Narrative</a></li>
+                <li><a href="#" data-filter="commercial">Commercial</a></li>
+                <li><a href="#" data-filter="branded">Branded Content</a></li>
+                <li><a href="#" data-filter="showcase">Showcase / BTS</a></li>
             </ul>
+
             <div class="sidebar-footer">
                 <p>Contact:<br><a href="mailto:your.email@example.com">your.email@example.com</a></p>
             </div>
         </nav>
 
-        <main class="main-content project-detail" id="project-detail-container">
-            </main>
+        <main class="main-content">
+            
+            <section id="landing-view" class="active-view">
+                <img src="image/IMG_4657.jpg" alt="Portfolio Landing Image" class="landing-image-display">
+            </section>
+            
+            <section id="portfolio-grid-view" style="display: none;">
+                 <div class="project-grid" id="project-grid-container">
+                    </div>
+            </section>
+            
+        </main>
     </div>
 
     <script src="projects.js"></script>
