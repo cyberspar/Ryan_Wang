@@ -8,13 +8,14 @@
 }
 
 body {
+    /* ⬇️ 关键修改：使用 IBM Plex Sans，并将默认字重调轻 ⬇️ */
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 15px; /* 最终调整为 15px */
+    font-weight: 300; /* 默认字重调轻 */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -47,18 +48,18 @@ body {
 
 /* ⬇️ 新增：导航栏分类标题样式 ⬇️ */
 .nav-header {
-    font-size: 0.85rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.8rem; /* 字号更小 */
     font-weight: 600;
-    color: #999; /* 颜色更淡，表示标题而非链接 */
+    color: #999;
     margin-top: 15px;
     margin-bottom: 5px;
     padding: 8px 0 5px 0;
-    pointer-events: none; /* 确保不能被点击 */
-    text-transform: uppercase; /* 字母大写，更像标题 */
+    pointer-events: none; 
+    text-transform: uppercase; 
     letter-spacing: 0.8px;
 }
 
-/* ⬇️ 新增：分隔线样式 ⬇️ */
 .nav-divider {
     margin: 15px 0; 
     border: 0; 
@@ -73,8 +74,8 @@ body {
     padding: 8px 0; 
     text-decoration: none;
     color: var(--text-color);
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 0.95rem; /* 导航链接字号微调 */
+    font-weight: 400; /* 导航链接字重 */
     transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
@@ -84,6 +85,7 @@ body {
 }
 
 .sidebar-footer {
+    font-family: 'IBM Plex Sans', sans-serif;
     margin-top: auto; 
     font-size: 0.8rem; 
     line-height: 1.4;
@@ -158,6 +160,7 @@ body {
 }
 
 .project-detail p {
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.8;
