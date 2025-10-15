@@ -13,7 +13,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.4;
-    font-size: 14px;
+    font-size: 14px; 
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,8 +28,8 @@ body {
     top: 0;
     left: 0;
     background-color: var(--bg-color); 
-    border-right: none; /* ⬇️ 修正 1: 移除右侧边框 ⬇️ */
-    padding: 30px;
+    border-right: none; 
+    padding: 30px; 
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,6 @@ body {
 }
 
 .main-nav li a:hover, .main-nav li a.active {
-    /* 修正 3: 移除 active 状态下可能导致重叠的复杂样式，只保留高对比 */
     color: var(--title-color); 
     font-weight: 600;
 }
@@ -108,7 +107,7 @@ body {
     color: #555;
 }
 
-/* --- Landing Page 形象展示页样式 (最终对齐) --- */
+/* --- Landing Page 形象展示页样式 (居中图片) --- */
 #landing-view {
     position: relative; 
     top: 0;
@@ -116,20 +115,20 @@ body {
     width: 100%;
     height: 100%; 
     background-color: var(--bg-color); 
-    padding: 0; 
+    
+    /* 修正留白：增加上下内边距 */
+    padding: 20px; 
     margin: 0;
     
-    /* ⬇️ 修正 2: 靠左对齐，但增加左侧内边距作为缓冲 ⬇️ */
     display: flex;
-    justify-content: flex-start; /* 核心：向左对齐 */
+    justify-content: center;
     align-items: center; 
-    padding-left: 20px; /* 增加一点边距，防止图片紧贴侧边栏 */
 }
 
 .landing-image-display {
-    /* 使用 95% 的父容器高度，确保留白，但占据大部分宽度 */
-    max-width: 95%;
-    max-height: 95%;
+    /* ⬇️ 最终修正：严格限制尺寸，并使用 object-fit 确保适配 ⬇️ */
+    max-width: 90%;
+    max-height: 80vh; /* 限制在 80% 屏幕高度，确保上下留白 */
     width: auto;      
     height: auto;     
     object-fit: contain; 
@@ -151,5 +150,4 @@ body {
     padding: 50px 5vw; 
     min-height: 100vh;
 }
-
-/* ... (省略了其他样式，但请确保你完整替换) ... */
+/* ... (其余样式保持不变) ... */
