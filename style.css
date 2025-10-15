@@ -1,30 +1,223 @@
-/* 修复折叠效果的关键样式 */
-.submenu {
-    list-style: none;
-    padding: 0;
+:root {
+    --bg-color: #ffffff;
+    --sidebar-bg-color: #ffffff;
+    --text-color: #000000;
+    --title-color: #000000;
+    --border-color: #e5e5e5;
+    --accent-color: #007BFF;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
     margin: 0;
-    height: 0; /* 必须是 0，初始折叠状态 */
-    overflow: hidden; /* 必须隐藏溢出内容 */
-    /* ⬇️ 核心：这个属性让高度变化产生动画效果 ⬇️ */
-    transition: height 0.3s ease-out; 
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.4;
+    font-size: 14px; /* 基础字号 */
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* 确保父级标题可以点击 */
-.nav-header.nav-toggle {
-    cursor: pointer;
-    font-size: 0.85rem;
+.portfolio-wrapper { display: flex; }
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar-bg-color);
+    border-right: 1px solid var(--border-color);
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem; 
+    font-weight: 600;
+    color: var(--title-color);
+    text-decoration: none;
+    margin-bottom: 50px;
+    letter-spacing: 0.1em;
+}
+
+/* 导航栏样式... */
+.nav-header {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
     font-weight: 700;
-    color: var(--title-color); 
-    margin-top: 15px;
-    margin-bottom: 5px;
+    color: #000;
+    margin-top: 25px;
+    margin-bottom: 0px;
     padding: 4px 0 3px 0;
+    pointer-events: none;
+    text-transform: uppercase;
     letter-spacing: 0.8px;
-    transition: color 0.2s;
 }
 
-/* 确保子链接有正确缩进 */
-.submenu li a {
-    font-size: 0.85rem;
-    padding: 3px 0 3px 10px; /* 缩进 */
-    font-weight: 300; 
+.nav-divider {
+    margin: 15px 0; 
+    border: 0; 
+    border-top: 1px solid var(--border-color);
+    opacity: 0.6;
+}
+
+.main-nav ul { list-style: none; padding: 0; margin: 0; }
+
+.main-nav li a {
+    display: block;
+    padding: 2px 0; 
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.3;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.main-nav li a:hover, .main-nav li a.active {
+    color: var(--title-color); 
+    font-weight: 600;
+}
+
+.sidebar-footer {
+    font-family: 'IBM Plex Mono', monospace;
+    margin-top: auto; 
+    font-size: 0.75rem; 
+    line-height: 1.4;
+    color: #555;
+}
+
+/* --- Landing Page 形象展示页样式 (居中图片) --- */
+#landing-view {
+    position: relative; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--bg-color); 
+    padding: 0; 
+    margin: 0;
+    
+    /* ⬇️ 核心：使用 Flexbox 居中图片 ⬇️ */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.landing-image-display {
+    /* ⬇️ 最终修正：使用视口单位限制图片尺寸，留出更多白边 ⬇️ */
+    max-width: 80vw;   /* 图片最大宽度为视口宽度的 80% */
+    max-height: 80vh;  /* 图片最大高度为视口高度的 80% */
+    width: auto;      
+    height: auto;     
+    object-fit: contain; 
+    display: block;
+    /* 移除 cursor: pointer，因为图片本身不触发交互 */
+}
+
+.landing-content { display: none; }
+
+
+.main-content {
+    margin-left: 200px; 
+    padding: 0; 
+    width: calc(100% - 200px); 
+    height: 100vh; 
+    overflow-y: auto; 
+}
+
+#portfolio-grid-view {
+    padding: 50px 5vw; 
+    min-height: 100vh;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 30px;
+}
+
+.project-item a {
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-item a:hover img { transform: scale(1.05); }
+
+.project-item .title-overlay {
+    font-family: 'IBM Plex Mono', monospace;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px; 
+    color: white;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); 
+    font-weight: 600;
+    box-sizing: border-box;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    font-size: 1rem;
+}
+
+.project-item a:hover .title-overlay { opacity: 1; }
+
+.project-detail h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    margin-top: 40px;
+}
+
+.project-detail h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin-top: 40px;
+}
+
+.project-detail p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 800px;
+}
+
+.project-info-box strong { font-weight: 600; color: var(--title-color); }
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    max-width: 1000px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
