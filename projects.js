@@ -1,9 +1,4 @@
-// ======================================================================
-// 你的项目数据库 (最终版本 - 语法校验通过)
-// ======================================================================
-
 const projectsData = [
-    // ------------------- [ 叙事短片 (Narrative) - 剪辑和调色 ] -------------------------
     {
         id: "temptation", 
         title: "Temptation",
@@ -28,14 +23,12 @@ const projectsData = [
         roles: ["editing", "color", "narrative"],
         description: `<p>Logline: This is a short film about the mental struggle of a high school student Jin who has studied art for a long time. Before he took the college entrance exam, a new art teacher, Chen, arrived. Chen might help Jin get a high score, but the unexpected sexual harassment in the painting room puts Jin into a dilemma. (Editor Edition)</p><p>Director - Yuqian Zhang <br>1st Assistant Director - Dekang Liu<br>Director of photography - Yifan Wen<br><strong>Editor - Yuzhou Wang （me）</strong><br><strong>Colorist - Yuzhou Wang（me）</strong><br><strong>Sound Designer - Yuzhou Wang（me）</strong><br><br>*None of the music belongs to me<br>Music Credits: [List of music credits]<br><br>Special thanks to Tailai Yuan.</p>`
     },
-    
-    // ------------------- [ 叙事短片 (Narrative) - 调色或剪辑为主 ] -------------------------
     {
         id: "child-far-away", 
         title: "Child from far away",
         coverImage: "https://img.youtube.com/vi/U_oRSHk-UtQ/maxresdefault.jpg",
         youtubeId: "U_oRSHk-UtQ",
-        roles: ["color", "narrative"],
+        roles: ["editing", "narrative"],
         description: `<p>Logline: A story about a Tibetan child and his prosecutor friend.<br>Directed by Cang Hai<br>Edited by Yuzhou Wang</p>`
     },
     {
@@ -87,21 +80,11 @@ const projectsData = [
         description: `<p>Logline: A father and son engage in a heartfelt conversation about the meaning of life following the passing of the grandfather.</p><p>Director: Joel Bonilla<br>Writer: Connor McCahan<br>Producer: Patrick Shannon<br>DOP: Jason Miao<br>Editor: Zhaoxinyue Li<br><strong>Colorist: Ryan Wang</strong></p>`
     },
     {
-        id: "stranger", 
-        title: "Stranger",
-        coverImage: "image/Stranger/1.jpg",
-        youtubeId: "[待提供视频ID，原文件为图集]",
-        roles: ["editing", "narrative"],
-        description: `<p>Director: Qingyi “Evey” Yu<br>Writer: Eva McConnell<br>Producer: Huiqi Kuang<br>DOP: Modak Karani Devi Sathyanarayanan<br><strong>Editor: Ryan Wang</strong><br>Production Designer: Claire Choi<br>Sound Designer: Jialiang Sun</p>`
-    },
-    
-    // ------------------- [ 商业广告 (Commercial) - 默认同时负责 ] -------------------------
-    {
         id: "estee-revitalizing-c", 
         title: "ESTĒE LAUDER Revitalizing Supreme+",
         coverImage: "https://img.youtube.com/vi/XyqD1a-X1rc/maxresdefault.jpg", 
         youtubeId: "XyqD1a-X1rc",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing", "commercial"],
         description: `<p></p>`
     },
     {
@@ -109,7 +92,7 @@ const projectsData = [
         title: "ESTĒE LAUDER Futurist",
         coverImage: "https://img.youtube.com/vi/msERsg_S-K4/maxresdefault.jpg", 
         youtubeId: "msERsg_S-K4",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing", "commercial"],
         description: `<p></p>`
     },
     {
@@ -117,7 +100,7 @@ const projectsData = [
         title: "IKEA Meatball (China)",
         coverImage: "https://img.youtube.com/vi/ZPgv5OVN8zo/maxresdefault.jpg", 
         youtubeId: "ZPgv5OVN8zo",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing", "commercial"],
         description: `<p></p>`
     },
     {
@@ -141,7 +124,7 @@ const projectsData = [
         title: "Kilian X Bai Yu",
         coverImage: "https://img.youtube.com/vi/25zF7-Nk8jE/maxresdefault.jpg",
         youtubeId: "25zF7-Nk8jE",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing","commercial"],
         description: `<p></p>` 
     },
     {
@@ -149,7 +132,7 @@ const projectsData = [
         title: "Killian x Bai Yu - APPLE BRANDY",
         coverImage: "https://img.youtube.com/vi/25zF7-Nk8jE/maxresdefault.jpg",
         youtubeId: "25zF7-Nk8jE",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing", "commercial"],
         description: `<p></p>` 
     },
     {
@@ -165,7 +148,7 @@ const projectsData = [
         title: "SKAP 2023",
         coverImage: "https://img.youtube.com/vi/T7th9-jyCIk/maxresdefault.jpg",
         youtubeId: "T7th9-jyCIk",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing", "commercial"],
         description: `<p>1 min shoe-brand commercial. Edited and color graded by myself.</p>` 
     },
     {
@@ -173,7 +156,7 @@ const projectsData = [
         title: "夸克x赵晓卉",
         coverImage: "https://img.youtube.com/vi/D3K-oH05yck/maxresdefault.jpg",
         youtubeId: "D3K-oH05yck",
-        roles: ["editing", "color", "commercial"],
+        roles: ["editing", "commercial"],
         description: `<p></p>` 
     },
     {
@@ -181,7 +164,7 @@ const projectsData = [
         title: "Behind the scenes: FIRST FRAME - NOWNESS",
         coverImage: "https://img.youtube.com/vi/AFQcEFzcZXE/maxresdefault.jpg", 
         youtubeId: "AFQcEFzcZXE",
-        roles: ["editing", "color", "commercial"], 
+        roles: ["editing", "color", "commercial"],
         description: `<p>Edited and color-graded by me</p>`
     }
 ];
