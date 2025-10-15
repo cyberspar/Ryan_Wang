@@ -57,13 +57,6 @@ body {
     letter-spacing: 0.8px;
 }
 
-.nav-divider {
-    margin: 25px 0; 
-    border: 0; 
-    border-top: 1px solid var(--border-color);
-    opacity: 0.6;
-}
-
 .main-nav ul { list-style: none; padding: 0; margin: 0; }
 .main-nav > li { list-style: none; }
 
@@ -83,13 +76,28 @@ body {
     font-weight: 600;
 }
 
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 10px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+}
+
+.submenu li a {
+    font-size: 0.85rem;
+    padding: 3px 0;
+    font-weight: 300;
+}
+
 .sidebar-footer {
     font-size: 0.75rem; 
     line-height: 1.4;
     color: #555;
 }
 
-/* --- Landing Page 形象展示页样式 --- */
+/* --- Landing Page / Main Content --- */
 #landing-view {
     position: relative; 
     width: 100%;
@@ -126,11 +134,11 @@ body {
     min-height: 100vh;
 }
 
-/* ⬇️ 核心修改：项目网格布局 - 一行三个 ⬇️ */
+/* ⬇️ 核心修改：项目网格布局 - 锁定三列 ⬇️ */
 .project-grid {
     display: grid;
-    /* 修正：最小宽度增加到 320px，确保只能容纳 3 列 */
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    /* 修正：将最小宽度增加到 350px，以确保只容纳 3 列 */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
     gap: 30px; 
 }
 
@@ -212,24 +220,3 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-@media (max-width: 768px) {
-    .portfolio-wrapper { flex-direction: column; }
-    .sidebar {
-        position: static; 
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 20px; 
-    }
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 50px 20px;
-    }
-    /* 手机上强制单列 */
-    .project-grid { grid-template-columns: 1fr; }
-    .project-detail h1 { font-size: 1.8rem; }
-}
