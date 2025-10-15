@@ -16,19 +16,27 @@
             <a href="index.html" class="site-title">Ryan Wang</a>
             
             <ul class="main-nav">
-                <li><a href="#" data-filter="all" id="show-grid-link">All Projects</a></li>
+                <li><a href="#" data-filter="all" id="show-grid-link" class="active">All Projects</a></li>
                 
                 <hr class="nav-divider">
                 
-                <li class="nav-header">FILTER BY ROLE</li>
-                <li><a href="#" data-filter="color">Color Grading</a></li>
-                <li><a href="#" data-filter="editing">Editing</a></li>
+                <li class="nav-header">EDITING & COLOR GRADING</li>
+                
+                <li class="nav-header-sub">Editing</li>
+                <ul class="submenu">
+                    <li><a href="#" data-role="editing" data-type="narrative">Narrative</a></li>
+                    <li><a href="#" data-role="editing" data-type="commercial">Commercial</a></li>
+                </ul>
+
+                <li class="nav-header-sub">Color Grading</li>
+                <ul class="submenu">
+                    <li><a href="#" data-role="color" data-type="narrative">Narrative</a></li>
+                    <li><a href="#" data-role="color" data-type="commercial">Commercial</a></li>
+                </ul>
                 
                 <hr class="nav-divider">
 
-                <li class="nav-header">FILTER BY TYPE</li>
-                <li><a href="#" data-filter="narrative">Narrative</a></li>
-                <li><a href="#" data-filter="commercial">Commercial</a></li>
+                <li class="nav-header">OTHER CONTENT</li>
                 <li><a href="#" data-filter="branded">Branded Content</a></li>
                 <li><a href="#" data-filter="showcase">Showcase / BTS</a></li>
             </ul>
@@ -39,13 +47,8 @@
         </nav>
 
         <main class="main-content">
-            
             <section id="landing-view" class="active-view">
-                <div class="landing-content">
-                    <p class="landing-text">RYAN WANG</p>
-                    <p class="landing-subtitle">Editor / Colorist</p>
-                    <button id="start-portfolio" class="button-primary">View Portfolio →</button>
-                </div>
+                <img src="Image/IMG_4657.jpg" alt="Portfolio Landing Image" class="landing-image-display">
             </section>
             
             <section id="portfolio-grid-view" style="display: none;">
