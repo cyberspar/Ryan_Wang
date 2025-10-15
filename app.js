@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // ⬇️ 核心功能：折叠菜单逻辑 (修复点击无反应的 Bug) ⬇️
-    if (toggleHeaders.length > 0) { // 确保元素存在，避免 JS 报错
+    if (toggleHeaders.length > 0) {
         toggleHeaders.forEach(header => {
             header.addEventListener('click', () => {
                 const category = header.getAttribute('data-category');
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ⬇️ 核心功能：筛选逻辑 - 点击子菜单链接时，切换到网格视图 ⬇️
-    if (navLinks.length > 0) { // 确保链接存在
+    if (navLinks.length > 0) {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 视图切换函数 (切换回主页图片视图)
     const switchToLanding = () => {
         if (landingView && portfolioGridView) {
-            landingView.style.display = 'block';
+            landingView.style.display = 'flex'; // 修正为 flex 保持居中
             portfolioGridView.style.display = 'none';
         }
         // 移除所有 active 状态并确保子菜单折叠
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('.submenu').forEach(sub => sub.style.height = '0px');
     };
 
-    // ⬇️ 修正 4: 初始状态设置 ⬇️
+    // ⬇️ 最终修正：初始状态设置 ⬇️
     if (window.location.search === "") {
          switchToLanding();
     }
@@ -100,14 +100,15 @@ document.addEventListener("DOMContentLoaded", () => {
         portfolioGridView.style.display = 'block';
     }
 });
+
 // **********************************************
-// * 核心筛选函数 (请确保 app.js 中包含此部分代码) *
+// * 核心筛选函数 (保持不变) *
 // **********************************************
 
 function generateProjectGrid(container, roleFilter, typeFilter) {
     container.innerHTML = ''; 
 
-    const filteredProjects = projectsData.filter(project => {
+    const filteredProjects = window.projectsData.filter(project => { // 使用 window.projectsData
         // 1. 单标签筛选 ('showcase', 'branded')
         if (typeFilter === 'all' || typeFilter === undefined) { 
             return roleFilter === 'all' || project.roles.includes(roleFilter);
@@ -141,7 +142,7 @@ function generateProjectGrid(container, roleFilter, typeFilter) {
 function generateProjectDetail(container) {
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('id');
-    const project = projectsData.find(p => p.id === projectId);
+    const project = window.projectsData.find(p => p.id === projectId); // 使用 window.projectsData
 
     if (project) {
         document.title = `${project.title} - Ryan Wang`;
@@ -161,6 +162,6 @@ function generateProjectDetail(container) {
             </div>
         `;
     } else {
-        container.innerHTML = `<h1>Project Not Found</h1><p>The requested project could not be found. Please return to the <a href="index.html">Homepage</a>.</p>`;
+        container.innerHTML = `<h1>Project Not Found</h1><p>The requested project could not be found. Please return to the <a href="index.html">Homepage</a></p>`;
     }
 }
