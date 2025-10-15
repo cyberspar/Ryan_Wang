@@ -1,99 +1,143 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 元素获取
-    const landingView = document.getElementById('landing-view');
-    const portfolioGridView = document.getElementById('portfolio-grid-view');
-    const navLinks = document.querySelectorAll('.main-nav a');
-    const gridContainer = document.getElementById('project-grid-container');
-
-    // 确保 Landing View 是默认状态
-    if (landingView && portfolioGridView) {
-        landingView.style.display = 'flex';
-        portfolioGridView.style.display = 'none';
-    }
-
-    // 切换视图并激活筛选的函数
-    const switchView = (roleFilter = null, typeFilter = null) => {
-        // 1. 切换视图
-        landingView.style.display = 'none';
-        portfolioGridView.style.display = 'block';
-
-        // 2. 激活正确的链接
-        navLinks.forEach(nav => nav.classList.remove('active'));
-        
-        // 3. 运行筛选
-        if (gridContainer) {
-            generateProjectGrid(gridContainer, roleFilter, typeFilter);
-        }
-    };
-    
-    // 监听导航栏的所有点击事件
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            const singleFilter = e.target.getAttribute('data-filter'); // 用于 'all', 'showcase', 'branded'
-            const roleFilter = e.target.getAttribute('data-role'); // 用于 'editing', 'color'
-            const typeFilter = e.target.getAttribute('data-type'); // 用于 'narrative', 'commercial'
-
-            // 激活链接
-            navLinks.forEach(nav => nav.classList.remove('active'));
-            e.target.classList.add('active');
-
-            // 逻辑分支
-            if (singleFilter === 'all') {
-                switchView('all', 'all'); // 'All Projects' 按钮
-            } else if (singleFilter) {
-                // 'showcase' 或 'branded' 按钮
-                switchView(singleFilter);
-            } else if (roleFilter && typeFilter) {
-                // 二级菜单筛选 (Editing/Color + Narrative/Commercial)
-                switchView(roleFilter, typeFilter);
-            }
-        });
-    });
-
-    // 确保 detail 页面功能不变 (省略了 app.js 后面部分，请确保保留你完整的 app.js)
-    
-    // ... 确保 generateProjectGrid 和 generateProjectDetail 包含在 app.js 中 ...
-});
-
-// **********************************************
-// * 核心筛选函数 (请确保在 app.js 中包含此函数) *
-// **********************************************
-
-function generateProjectGrid(container, roleFilter, typeFilter) {
-    container.innerHTML = ''; 
-
-    const filteredProjects = projectsData.filter(project => {
-        // 1. 'All Projects' 或 'Showcase' / 'Branded' 单标签筛选
-        if (roleFilter === 'all' || roleFilter === 'showcase' || roleFilter === 'branded') {
-            return roleFilter === 'all' || project.roles.includes(roleFilter);
-        }
-        
-        // 2. 二级菜单 (Role AND Type) 筛选
-        if (roleFilter && typeFilter) {
-            // 必须同时满足 角色 (role) 和 类型 (type) 两个条件
-            const roleMatch = project.roles.includes(roleFilter);
-            const typeMatch = project.roles.includes(typeFilter);
-
-            return roleMatch && typeMatch;
-        }
-
-        return true; // 默认返回 true，以防出现意外情况
-    });
-
-    // 渲染筛选后的项目 (代码与之前一致)
-    filteredProjects.forEach(project => {
-        // ... (渲染代码) ...
-        const projectItem = document.createElement('div');
-        projectItem.className = 'project-item';
-        
-        projectItem.innerHTML = `
-            <a href="project.html?id=${project.id}">
-                <img src="${project.coverImage}" alt="${project.title} Cover">
-                <span class="title-overlay">${project.title}</span>
-            </a>
-        `;
-        container.appendChild(projectItem);
-    });
-}
+const projectsData = [
+    // ------------------- [ 编辑与调色 (E+C) / Showcase ] -------------------------
+    {
+        id: "first-frame", 
+        title: "Behind the scenes: FIRST FRAME - NOWNESS",
+        coverImage: "https://img.youtube.com/vi/AFQcEFzcZXE/maxresdefault.jpg", 
+        youtubeId: "AFQcEFzcZXE",
+        roles: ["editing", "color", "showcase"],
+        description: `
+            <p>In the latest episode of the NOWNESS "Behind the Scenes" series, actors Zhou Xun, Jing Boran, and Zhang Junning give an insight into the 15th FIRST Youth Film Festival and Chanel's "FIRST FRAME" from their own perspectives. They also shared their perspectives on the film. They also talked with several short film directors and shared their "behind-the-scenes" stories.</p>
+            <p>In these six different works, we jumped into the hearts of the characters, explored and pursued beauty, let our emotions ebb and flow, and experienced our genuine emotions as human beings; we saw different women exploring the future in the "rivers" of the times and and grew up with them in the long stream of images. Whether in a particular context of the times or confronting the rules of the town, these images start from an everyday perspective, measuring the sorrows and joys of individuals and families at a mundane pace. Life's various thoughts and perceptions are finally integrated into one frame and become one video story.</p>
+            <p>Edited and color-graded by me</p>
+        `
+    },
+    // ------------------- [ 商业广告 (默认 E+C) ] -------------------------
+    {
+        id: "estee-revitalizing", 
+        title: "ESTĒE LAUDER Revitalizing Supreme+ Campaign Video (China)",
+        coverImage: "https://img.youtube.com/vi/XyqD1a-X1rc/maxresdefault.jpg", 
+        youtubeId: "XyqD1a-X1rc",
+        roles: ["editing", "color", "commercial"], // 假设同时负责
+        description: `<p></p>`
+    },
+    {
+        id: "estee-futurist", 
+        title: "ESTĒE LAUDER Futurist Campaign Video (China)",
+        coverImage: "https://img.youtube.com/vi/msERsg_S-K4/maxresdefault.jpg", 
+        youtubeId: "msERsg_S-K4",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>`
+    },
+    {
+        id: "ikea-meatball", 
+        title: "IKEA Meatball (China)",
+        coverImage: "https://img.youtube.com/vi/ZPgv5OVN8zo/maxresdefault.jpg", 
+        youtubeId: "ZPgv5OVN8zo",
+        roles: ["editing", "color", "branded"],
+        description: `<p></p>`
+    },
+    {
+        id: "bebe-aw22", 
+        title: "BEBE 2022 AUTUMN / WINTER",
+        coverImage: "https://img.youtube.com/vi/rYbYrR_1k-w/maxresdefault.jpg",
+        youtubeId: "rYbYrR_1k-w",
+        roles: ["editing", "color", "commercial"],
+        description: `<p>Contains two video links in the original file: https://youtu.be/rYbYrR_1k-w and https://youtube.com/shorts/UHPbdLy7JpQ?feature=share</p>`
+    },
+    {
+        id: "bebe-winter22", 
+        title: "BEBE 2022 WINTER",
+        coverImage: "https://img.youtube.com/vi/UHPbdLy7JpQ/maxresdefault.jpg",
+        youtubeId: "UHPbdLy7JpQ",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>`
+    },
+    {
+        id: "kilian-x-bai-yu-1", 
+        title: "Kilian X Bai Yu",
+        coverImage: "https://img.youtube.com/vi/25zF7-Nk8jE/maxresdefault.jpg",
+        youtubeId: "25zF7-Nk8jE",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>` 
+    },
+    {
+        id: "kilian-x-bai-yu-2", 
+        title: "Killian x Bai Yu - APPLE BRANDY",
+        coverImage: "https://img.youtube.com/vi/25zF7-Nk8jE/maxresdefault.jpg",
+        youtubeId: "25zF7-Nk8jE",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>` 
+    },
+    {
+        id: "uniqlo-fall21", 
+        title: "Uniqlo 2021 Beijing fall version",
+        coverImage: "https://img.youtube.com/vi/oFINYU4OH1A/maxresdefault.jpg",
+        youtubeId: "oFINYU4OH1A",
+        roles: ["editing", "color", "commercial"],
+        description: `<p></p>` 
+    },
+    {
+        id: "skap-2023", 
+        title: "SKAP 2023",
+        coverImage: "https://img.youtube.com/vi/T7th9-jyCIk/maxresdefault.jpg",
+        youtubeId: "T7th9-jyCIk",
+        roles: ["editing", "color", "commercial"], // 原始文件标注 Edited and color graded by myself
+        description: `<p>1 min shoe-brand commercial. Edited and color graded by myself.</p>` 
+    },
+    {
+        id: "quark-x-xiaohui", 
+        title: "夸克x赵晓卉",
+        coverImage: "https://img.youtube.com/vi/D3K-oH05yck/maxresdefault.jpg",
+        youtubeId: "D3K-oH05yck",
+        roles: ["editing", "color", "branded"],
+        description: `<p></p>` 
+    },
+    // ------------------- [ 叙事短片 (Narrative) - 按实际贡献标签 ] -------------------------
+    {
+        id: "child-far-away", 
+        title: "Child from far away",
+        coverImage: "https://img.youtube.com/vi/U_oRSHk-UtQ/maxresdefault.jpg",
+        youtubeId: "U_oRSHk-UtQ",
+        roles: ["color", "narrative"], // 原始文件未明确标注，假设为调色
+        description: `<p>Logline: A story about a Tibetan child and his prosecutor friend.<br>Directed by Cang Hai<br>Edited by Yuzhou Wang</p>`
+    },
+    {
+        id: "cold-call-img",
+        title: "Cold Call",
+        coverImage: "../image/Cold Call/1.jpg",
+        youtubeId: "[待提供视频ID，原文件为图集]",
+        roles: ["color", "narrative"], // 原始文件标注 Colorist: Ryan Wang
+        description: `<p>Logline: An overworked real estate employee, frazzled by her demanding boss, signs her up for a relentless automated messaging service, teaching her a lesson in boundaries and reclaiming her work-life balance.</p><p>Director: Manni “Nebula” Li<br>Writer: Rob Bogin<br>Producer: Nic Cáceres<br>DOP: Jacob Chen<br>Editor: Zhiyi “Zoey” Zhu<br><strong>Colorist: Ryan Wang</strong></p>`
+    },
+    {
+        id: "ambient-noise-img",
+        title: "Ambient Noise",
+        coverImage: "../image/Ambient Noise/1.jpg",
+        youtubeId: "[待提供视频ID，原文件为图集]",
+        roles: ["color", "narrative"], // 原始文件标注 Colorist: Ryan Wang
+        description: `<p>Logline: A father and son engage in a heartfelt conversation about the meaning of life following the passing of the grandfather.</p><p>Director: Joel Bonilla<br>Writer: Connor McCahan<br>Producer: Patrick Shannon<br>DOP: Jason Miao<br>Editor: Zhaoxinyue Li<br><strong>Colorist: Ryan Wang</strong></p>`
+    },
+    {
+        id: "wanna-dance", 
+        title: "Wanna Dance",
+        coverImage: "../image/Wanna Dance/1.jpg", 
+        youtubeId: "[待提供视频ID，原文件为图集]",
+        roles: ["color", "narrative"], // 原始文件标注 Colorist: Ryan Wang
+        description: `<p>Logline: In the disco dance party, a man and a woman who secretly have feelings for each other but are unaware of the other's feelings are interrupted by a third party. They try to express their feelings to each other.</p><p>Director: AJ Thames<br>Writer: Erika Dunn<br>Producer: Margot Moore & Isabelle Rivera<br>DOP: Mia Ge<br>Editor: Roy Cheng<br><strong>Colorist: Ryan Wang</strong></p>`
+    },
+    {
+        id: "stranger", 
+        title: "Stranger",
+        coverImage: "../image/Stranger/1.jpg",
+        youtubeId: "[待提供视频ID，原文件为图集]",
+        roles: ["editing", "narrative"], // 原始文件标注 Editor: Ryan Wang
+        description: `<p>Director: Qingyi “Evey” Yu<br>Writer: Eva McConnell<br>Producer: Huiqi Kuang<br>DOP: Modak Karani Devi Sathyanarayanan<br><strong>Editor: Ryan Wang</strong><br>Production Designer: Claire Choi<br>Sound Designer: Jialiang Sun</p>`
+    },
+    {
+        id: "killher", 
+        title: "Killher",
+        coverImage: "../image/Killher/1.jpg",
+        youtubeId: "[待提供视频ID，原文件为图集]",
+        roles: ["color", "narrative"], // 原始文件标注 Colorist: Ryan Wang
+        description: `<p>Logline: [原文件无 Logline]</p><p>Director:Roze JC Zepeda<br>Writer: Kiyanti Schlank
