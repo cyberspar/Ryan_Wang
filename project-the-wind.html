@@ -1,57 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-GB">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wind - Ryan Wang</title>
-    
+    <title>Project Detail - Ryan Wang</title>
     <link rel="stylesheet" href="style.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="portfolio-wrapper">
         <nav class="sidebar">
             <a href="index.html" class="site-title">Ryan Wang</a>
-            
             <ul class="main-nav">
                 <li><a href="index.html" class="active">作品 (Projects)</a></li>
             </ul>
-
             <div class="sidebar-footer">
-                <p>联系我:<br><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p>Contact:<br><a href="mailto:your.email@example.com">your.email@example.com</a></p>
             </div>
         </nav>
 
-        <main class="main-content project-detail">
-            
-            <h1>The Wind</h1>
-            
-            <div class="project-info-box">
-                <p>
-                    <strong>项目类型：</strong> 音乐 MV / 概念短片 <br>
-                    <strong>我的角色：</strong> 首席剪辑师 & 调色师 <br>
-                    <strong>使用工具：</strong> DaVinci Resolve Studio, Premiere Pro
-                </p>
-                
-                <h3>项目简介与挑战</h3>
-                <p>
-                    这个项目旨在为艺术家 [XXX] 创造一段视觉沉浸式的短片。最大的挑战是将不同时间、不同天气下拍摄的素材统一为高对比度、低饱和度的电影胶片感，以突出作品的孤寂与力量感。
-                </p>
-
-                <h3>我的贡献：技术与叙事</h3>
-                <p>
-                    在**剪辑**上，我侧重于呼吸感和节奏感，使用了**慢放和快速切入的对比**来增强情绪。在**调色**上，我采用了 **Kodak 2383** 模拟 LUT，并通过精准的**曲线调整**实现了暗部偏蓝的电影色彩分离效果。我确保了所有场景中**人物肤色**保持一致的中性。
-                </p>
-            </div>
-            
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/a-sZtlW-k2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-        </main>
+        <main class="main-content project-detail" id="project-detail-container">
+            </main>
     </div>
+
+    <script src="projects.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
