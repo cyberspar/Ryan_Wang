@@ -8,13 +8,12 @@
 }
 
 body {
-    /* 修正字体大小，避免过小导致浏览器计算错误 */
     font-family: 'IBM Plex Mono', monospace;
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.4;
-    font-size: 14px; /* 调整回 14px 基础字号 */
+    font-size: 14px;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,9 +27,9 @@ body {
     position: fixed; 
     top: 0;
     left: 0;
-    background-color: var(--sidebar-bg-color);
-    border-right: 1px solid var(--border-color);
-    padding: 30px; 
+    background-color: var(--bg-color); 
+    border-right: none; /* ⬇️ 修正 1: 移除右侧边框 ⬇️ */
+    padding: 30px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -74,15 +73,31 @@ body {
     padding: 2px 0; 
     text-decoration: none;
     color: var(--text-color);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: 400;
     line-height: 1.3;
     transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
 .main-nav li a:hover, .main-nav li a.active {
+    /* 修正 3: 移除 active 状态下可能导致重叠的复杂样式，只保留高对比 */
     color: var(--title-color); 
     font-weight: 600;
+}
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+}
+
+.submenu li a {
+    font-size: 0.85rem;
+    padding: 3px 0 3px 10px;
+    font-weight: 300;
 }
 
 .sidebar-footer {
@@ -93,7 +108,7 @@ body {
     color: #555;
 }
 
-/* --- Landing Page 形象展示页样式 (居中图片) --- */
+/* --- Landing Page 形象展示页样式 (最终对齐) --- */
 #landing-view {
     position: relative; 
     top: 0;
@@ -104,19 +119,20 @@ body {
     padding: 0; 
     margin: 0;
     
-    /* 核心：使用 Flexbox 居中图片 */
+    /* ⬇️ 修正 2: 靠左对齐，但增加左侧内边距作为缓冲 ⬇️ */
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+    justify-content: flex-start; /* 核心：向左对齐 */
+    align-items: center; 
+    padding-left: 20px; /* 增加一点边距，防止图片紧贴侧边栏 */
 }
 
 .landing-image-display {
-    /* ⬇️ 最终修正：使用百分比限制，确保留出 5% 左右的白边 ⬇️ */
-    max-width: 90%;   /* 图片最大宽度为父容器的 90% */
-    max-height: 90%;  /* 图片最大高度为父容器的 90% */
+    /* 使用 95% 的父容器高度，确保留白，但占据大部分宽度 */
+    max-width: 95%;
+    max-height: 95%;
     width: auto;      
     height: auto;     
-    object-fit: contain; /* 确保图片完整显示在容器内，不裁剪 */
+    object-fit: contain; 
     display: block;
 }
 
@@ -127,7 +143,7 @@ body {
     margin-left: 200px; 
     padding: 0; 
     width: calc(100% - 200px); 
-    height: 100vh; /* 确保高度计算正确 */
+    height: 100vh;
     overflow-y: auto; 
 }
 
@@ -136,4 +152,4 @@ body {
     min-height: 100vh;
 }
 
-/* ... (省略了其他样式，但确保你完整替换) ... */
+/* ... (省略了其他样式，但请确保你完整替换) ... */
