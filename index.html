@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" class="crossorigin">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -16,27 +16,15 @@
             <a href="index.html" class="site-title">Ryan Wang</a>
             
             <ul class="main-nav">
-                
-                <li class="nav-header nav-toggle" data-category="editing">
-                    EDITING →
-                </li>
-                <ul class="submenu" data-category="editing">
-                    <li><a href="#" data-role="editing" data-type="narrative">Narrative</a></li>
-                    <li><a href="#" data-role="editing" data-type="commercial">Commercial</a></li>
-                </ul>
-
-                <li class="nav-header nav-toggle" data-category="color">
-                    Color Grading →
-                </li>
-                <ul class="submenu" data-category="color">
-                    <li><a href="#" data-role="color" data-type="narrative">Narrative</a></li>
-                    <li><a href="#" data-role="color" data-type="commercial">Commercial</a></li>
-                </ul>
+                <li class="nav-header">EDITING</li>
+                <li><a href="#" data-role="editing" data-type="narrative">Narrative</a></li>
+                <li><a href="#" data-role="editing" data-type="commercial">Commercial</a></li>
                 
                 <hr class="nav-divider">
-                
-                <li><a href="#" data-filter="branded">Branded Content</a></li>
-                <li><a href="#" data-filter="showcase">Showcase / BTS</a></li>
+
+                <li class="nav-header">COLOR GRADING</li>
+                <li><a href="#" data-role="color" data-type="narrative">Narrative</a></li>
+                <li><a href="#" data-role="color" data-type="commercial">Commercial</a></li>
                 
             </ul>
 
