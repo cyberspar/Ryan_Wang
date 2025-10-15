@@ -8,7 +8,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Serif:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="portfolio-wrapper">
@@ -16,7 +16,7 @@
             <a href="index.html" class="site-title">Ryan Wang</a>
             
             <ul class="main-nav">
-                <li><a href="#" data-filter="all" class="active">All Projects</a></li>
+                <li><a href="#" data-filter="all" id="show-grid-link">All Projects</a></li>
                 
                 <hr class="nav-divider">
                 
@@ -39,8 +39,20 @@
         </nav>
 
         <main class="main-content">
-            <div class="project-grid" id="project-grid-container">
+            
+            <section id="landing-view" class="active-view">
+                <div class="landing-content">
+                    <p class="landing-text">RYAN WANG</p>
+                    <p class="landing-subtitle">Editor / Colorist</p>
+                    <button id="start-portfolio" class="button-primary">View Portfolio →</button>
                 </div>
+            </section>
+            
+            <section id="portfolio-grid-view" style="display: none;">
+                 <div class="project-grid" id="project-grid-container">
+                    </div>
+            </section>
+            
         </main>
     </div>
 
