@@ -6,21 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const gridContainer = document.getElementById('project-grid-container');
     const siteTitle = document.querySelector('.site-title'); 
 
-    // 视图切换函数 (切换到网格视图并筛选)
+    // 视图切换函数
     const switchView = (roleFilter, typeFilter, activeLink) => {
-        // 1. 切换视图
         if (landingView && portfolioGridView) {
             landingView.style.display = 'none';
             portfolioGridView.style.display = 'block';
         }
-
-        // 2. 激活链接
+        
         navLinks.forEach(nav => nav.classList.remove('active'));
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
+        if (activeLink) activeLink.classList.add('active');
 
-        // 3. 运行筛选
         if (gridContainer) {
             generateProjectGrid(gridContainer, roleFilter, typeFilter);
         }
@@ -66,11 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const detailContainer = document.getElementById('project-detail-container');
     if (detailContainer) {
         generateProjectDetail(detailContainer);
-        landingView.style.display = 'none';
-        portfolioGridView.style.display = 'none';
+        if(landingView) landingView.style.display = 'none';
+        if(portfolioGridView) portfolioGridView.style.display = 'none';
     }
 });
-
 
 // **********************************************
 // * 核心筛选函数 (保持不变) *
@@ -85,6 +79,7 @@ function generateProjectGrid(container, roleFilter, typeFilter) {
         return roleMatch && typeMatch;
     });
 
+    // 渲染筛选后的项目
     filteredProjects.forEach(project => {
         const projectItem = document.createElement('div');
         projectItem.className = 'project-item';
