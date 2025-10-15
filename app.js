@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const gridContainer = document.getElementById('project-grid-container');
     const siteTitle = document.querySelector('.site-title'); 
 
-    // 视图切换函数
+    // 视图切换函数 (切换到网格视图并筛选)
     const switchView = (roleFilter, typeFilter, activeLink) => {
         if (landingView && portfolioGridView) {
             landingView.style.display = 'none';
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.forEach(nav => nav.classList.remove('active'));
     };
 
-    // 筛选逻辑 - 点击链接时，切换到网格视图
+    // 筛选逻辑
     if (navLinks.length > 0) {
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -47,10 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 点击左上角标题，回到图片主页
-    siteTitle.addEventListener('click', (e) => {
-        e.preventDefault(); 
-        switchToLanding();
-    });
+    if (siteTitle) {
+        siteTitle.addEventListener('click', (e) => {
+            e.preventDefault(); 
+            switchToLanding();
+        });
+    }
 
     // 初始状态设置
     if (window.location.search === "") {
@@ -66,24 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// **********************************************
-// * 核心筛选函数 (保持不变) *
-// **********************************************
-
 function generateProjectGrid(container, roleFilter, typeFilter) {
     container.innerHTML = ''; 
-
     const filteredProjects = window.projectsData.filter(project => {
         const roleMatch = project.roles.includes(roleFilter);
         const typeMatch = project.roles.includes(typeFilter);
         return roleMatch && typeMatch;
     });
-
-    // 渲染筛选后的项目
     filteredProjects.forEach(project => {
         const projectItem = document.createElement('div');
         projectItem.className = 'project-item';
-        
         projectItem.innerHTML = `
             <a href="project.html?id=${project.id}">
                 <img src="${project.coverImage}" alt="${project.title} Cover">
@@ -98,24 +92,13 @@ function generateProjectDetail(container) {
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('id');
     const project = window.projectsData.find(p => p.id === projectId); 
-
     if (project) {
         document.title = `${project.title} - Ryan Wang`;
-        
-        const videoHtml = project.youtubeId && project.youtubeId.startsWith('[') === false ? `
+        const videoHtml = project.youtubeId && !project.youtubeId.startsWith('[') ? `
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/${project.youtubeId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        ` : '';
-
-        container.innerHTML = `
-            ${videoHtml}
-            
-            <h1>${project.title}</h1>
-            <div class="project-info-box">
-                ${project.description}
-            </div>
-        `;
+            </div>` : '';
+        container.innerHTML = `${videoHtml}<h1>${project.title}</h1><div class="project-info-box">${project.description}</div>`;
     } else {
         container.innerHTML = `<h1>Project Not Found</h1><p>The requested project could not be found. Please return to the <a href="index.html">Homepage</a>.</p>`;
     }
