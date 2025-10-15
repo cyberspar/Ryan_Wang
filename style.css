@@ -1,19 +1,20 @@
 :root {
     --bg-color: #ffffff;
     --sidebar-bg-color: #f7f7f7;
-    --text-color: #000000;
+    --text-color: #000000; /* 纯黑 */
     --title-color: #000000;
     --border-color: #e5e5e5;
     --accent-color: #007BFF;
 }
 
 body {
+    /* ⬇️ 基础排版：IBM Plex Mono，字号 13px 达到极致紧凑感 ⬇️ */
     font-family: 'IBM Plex Mono', monospace;
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.4;
-    font-size: 14px;
+    line-height: 1.4; /* 缩紧行高 */
+    font-size: 13px; /* 基础字号调整为 13px */
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -21,15 +22,16 @@ body {
 
 .portfolio-wrapper { display: flex; }
 
+/* --- 左侧固定导航栏 --- */
 .sidebar {
-    width: 200px;
+    width: 200px; /* 缩窄侧边栏 */
     height: 100vh;
     position: fixed; 
     top: 0;
     left: 0;
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); 
     border-right: 1px solid var(--border-color);
-    padding: 30px;
+    padding: 30px; /* 减少内边距 */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -37,7 +39,7 @@ body {
 
 .site-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 1rem; 
+    font-size: 1rem;
     font-weight: 600;
     color: var(--title-color);
     text-decoration: none;
@@ -45,15 +47,15 @@ body {
     letter-spacing: 0.1em;
 }
 
-/* 导航栏样式... */
+/* 导航栏分类标题样式 */
 .nav-header {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #000; 
+    color: #000;
     margin-top: 25px;
     margin-bottom: 5px;
-    padding: 8px 0 5px 0;
+    padding: 4px 0 3px 0; /* 调整内边距 */
     pointer-events: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -69,12 +71,14 @@ body {
 .main-nav ul { list-style: none; padding: 0; margin: 0; }
 
 .main-nav li a {
+    /* ⬇️ 导航链接：实现紧凑排版 ⬇️ */
     display: block;
     padding: 4px 0; 
     text-decoration: none;
     color: var(--text-color);
-    font-size: 0.85rem;
-    font-weight: 400; 
+    font-size: 0.9rem; /* 接近 14.4px */
+    font-weight: 400;
+    line-height: 1.3; /* 关键：减小行高 */
     transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
@@ -91,7 +95,7 @@ body {
     color: #555;
 }
 
-/* ⬇️ 核心修改：Landing Page 背景图路径 ⬇️ */
+/* --- Landing Page 形象展示页样式 --- */
 #landing-view {
     position: absolute; 
     top: 0;
@@ -99,7 +103,7 @@ body {
     width: 100%;
     height: 100%; 
     
-    /* 最终图片路径：确保图片在 image/ 文件夹内 */
+    /* 你的背景图路径 */
     background-image: url('image/IMG_4657.jpg'); 
     background-size: cover;
     background-position: center;
@@ -151,6 +155,7 @@ body {
     background-color: #333;
 }
 
+/* --- 主内容区域和网格样式 --- */
 .main-content {
     margin-left: 200px; 
     padding: 0; 
@@ -164,7 +169,6 @@ body {
     min-height: 100vh;
 }
 
-/* 细节排版样式... */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
@@ -179,94 +183,4 @@ body {
     border-radius: 4px;
 }
 
-.project-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.project-item a:hover img { transform: scale(1.05); }
-
-.project-item .title-overlay {
-    font-family: 'IBM Plex Mono', monospace;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px; 
-    color: white;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); 
-    font-weight: 600;
-    box-sizing: border-box;
-    opacity: 0; 
-    transition: opacity 0.3s ease;
-    font-size: 1rem;
-}
-
-.project-item a:hover .title-overlay { opacity: 1; }
-
-.project-detail h1 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--title-color);
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
-    margin-top: 40px;
-}
-
-.project-detail h3 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--title-color);
-    margin-top: 40px;
-}
-
-.project-detail p {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.95rem;
-    font-weight: 400;
-    line-height: 1.6;
-    max-width: 800px;
-}
-
-.project-info-box strong { font-weight: 600; color: var(--title-color); }
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; 
-    height: 0;
-    overflow: hidden;
-    max-width: 1000px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-@media (max-width: 768px) {
-    .portfolio-wrapper { flex-direction: column; }
-    .sidebar {
-        position: static; 
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding: 20px; 
-    }
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-        padding: 50px 20px;
-    }
-    .project-grid { grid-template-columns: 1fr; }
-    .project-detail h1 { font-size: 1.8rem; }
-}
+.
