@@ -4,7 +4,6 @@
     --text-color: #000000;
     --title-color: #000000;
     --border-color: #e5e5e5;
-    --accent-color: #007BFF;
 }
 
 body {
@@ -28,7 +27,7 @@ body {
     top: 0;
     left: 0;
     background-color: var(--bg-color); 
-    border-right: none; 
+    border-right: 1px solid var(--border-color); /* 保留右侧边框以区分区域 */
     padding: 30px;
     box-sizing: border-box;
     display: flex;
@@ -36,7 +35,6 @@ body {
 }
 
 .site-title {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 1rem; 
     font-weight: 600;
     color: var(--title-color);
@@ -45,17 +43,16 @@ body {
     letter-spacing: 0.1em;
 }
 
-/* ⬇️ 核心修改：分区标题样式 ⬇️ */
+/* 分区标题样式 (移除黑点) */
 .nav-header {
-    list-style-type: none; /* 移除黑点 */
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1rem; /* 加大字号 */
+    list-style-type: none;
+    font-size: 1rem;
     font-weight: 700;
     color: #000;
     margin-top: 25px;
-    margin-bottom: 10px; /* 增加与下方链接的间距 */
+    margin-bottom: 10px;
     padding: 4px 0;
-    pointer-events: none; /* 确保不可点击 */
+    pointer-events: none;
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
@@ -64,10 +61,10 @@ body {
     margin: 25px 0; 
     border: 0; 
     border-top: 1px solid var(--border-color);
-    opacity: 0.6;
 }
 
 .main-nav ul { list-style: none; padding: 0; margin: 0; }
+.main-nav > li { list-style: none; } /* 确保一级 li 也没有黑点 */
 
 .main-nav li a {
     display: block;
@@ -85,33 +82,15 @@ body {
     font-weight: 600;
 }
 
-.submenu {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 0 10px;
-    height: auto; /* 子菜单默认展开 */
-    overflow: hidden;
-}
-
-.submenu li a {
-    font-size: 0.85rem;
-    padding: 3px 0;
-    font-weight: 300;
-}
-
 .sidebar-footer {
-    font-family: 'IBM Plex Mono', monospace;
     margin-top: auto; 
     font-size: 0.75rem; 
     line-height: 1.4;
     color: #555;
 }
 
-/* --- Landing Page 形象展示页样式 (最终对齐) --- */
 #landing-view {
     position: relative; 
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%; 
     background-color: var(--bg-color); 
@@ -145,4 +124,10 @@ body {
     padding: 50px 5vw; 
     min-height: 100vh;
 }
-/* ... (其他项目网格和详情页样式保持不变) ... */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 30px;
+}
+/* ... (其他项目和详情页样式保持不变) ... */
